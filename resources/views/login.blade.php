@@ -22,7 +22,7 @@
             <div class="col-lg-4 mx-auto">
               <div class="auth-form-light text-left p-5">
                 <div class="brand-logo">
-                  <img src="../../assets/images/logo.svg">
+                  <img src="../../assets/images/logo1.svg">
                 </div>
                 <h4>¡Bienvenido de nuevo!</h4>
                 <h6 class="fw-light">Inicia sesión para continuar.</h6>
@@ -56,7 +56,7 @@
                         <input type="checkbox" class="form-check-input" name="remember"> Recordarme
                       </label>
                     </div>
-                    <a href="#" class="auth-link text-black">¿Olvidaste tu contraseña?</a>
+                    <!-- <a href="#" class="auth-link text-black">¿Olvidaste tu contraseña?</a> -->
                   </div>
 
                   <!-- Enlace para registrarse -->

@@ -53,13 +53,11 @@
                         </div>
                     </div>
                     <div class="flot-chart-wrapper">
-
                         <div id="flotChart" class="flot-chart"
                             data-labels="{{ json_encode($labels) }}"
                             data-peso-inicial="{{ json_encode($pesoInicial) }}"
                             data-peso-final="{{ json_encode($pesoFinal) }}">
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -79,6 +77,7 @@
         </div>
     </div>
 
+
     <script>
         $(document).ready(function() {
             if ($("#flotChart").length) {
@@ -87,10 +86,15 @@
                 var pesoInicial = JSON.parse(chartData.getAttribute('data-peso-inicial'));
                 var pesoFinal = JSON.parse(chartData.getAttribute('data-peso-final'));
 
-                var maxItems = 5;
+                var maxItems = 10;
                 labels = labels.slice(-maxItems);
                 pesoInicial = pesoInicial.slice(-maxItems);
                 pesoFinal = pesoFinal.slice(-maxItems);
+
+
+                console.log('Labels:', labels);
+                console.log('Peso Inicial:', pesoInicial);
+                console.log('Peso Final:', pesoFinal);
 
                 var fechas = labels.map(function(label) {
                     return new Date(label).getTime();
@@ -140,7 +144,7 @@
                     xaxis: {
                         mode: 'time',
                         timeformat: "%d/%m",
-                        tickSize: [3, "day"],
+                        tickSize: [2, "day"],
                         tickFormatter: function(val, axis) {
                             return formatDate(val);
                         },
@@ -151,8 +155,8 @@
                         }
                     },
                     yaxis: {
-                        min: 0,
-                        max: 20,
+                        min: 40,
+                        max: 150,
                         show: true
                     }
                 });
@@ -167,13 +171,104 @@
                 });
             }
         });
+
+        //         $(document).ready(function() {
+        //     if ($("#flotChart").length) {
+        //         // Datos de prueba (hardcoded)
+        //         var labels = ["2024-12-01", "2024-12-02", "2024-12-03", "2024-12-04", "2024-12-05", "2024-12-06", "2024-12-07", "2024-12-08", "2024-12-09", "2024-12-10"];
+        //         var pesoInicial = [80, 81, 79, 82, 83, 84, 85, 86, 87, 88];
+        //         var pesoFinal = [80.5, 81.2, 79.5, 82.3, 83.1, 84.5, 85.2, 86.6, 87.8, 88.3];
+
+        //         var maxItems = 10;
+        //         labels = labels.slice(-maxItems);
+        //         pesoInicial = pesoInicial.slice(-maxItems);
+        //         pesoFinal = pesoFinal.slice(-maxItems);
+
+        //         var fechas = labels.map(function(label) {
+        //             return new Date(label).getTime();
+        //         });
+
+        //         var dashDataInicial = fechas.map(function(val, index) {
+        //             return [val, pesoInicial[index]];
+        //         });
+
+        //         var dashDataFinal = fechas.map(function(val, index) {
+        //             return [val, pesoFinal[index]];
+        //         });
+
+        //         var formatDate = function(date) {
+        //             var d = new Date(date);
+        //             var day = d.getDate().toString().padStart(2, '0');
+        //             var month = (d.getMonth() + 1).toString().padStart(2, '0');
+        //             return `${day}/${month}`;
+        //         };
+
+        //         // Configurar el gráfico
+        //         $.plot('#flotChart', [{
+        //             data: dashDataFinal,
+        //             color: '#00cff4',
+        //             lines: {
+        //                 show: true,
+        //                 lineWidth: 2,
+        //                 fill: true
+        //             }
+        //         }, {
+        //             data: dashDataInicial,
+        //             color: '#5e6eed',
+        //             lines: {
+        //                 show: true,
+        //                 lineWidth: 2,
+        //                 fill: true
+        //             }
+        //         }], {
+        //             series: {
+        //                 shadowSize: 0
+        //             },
+        //             grid: {
+        //                 borderWidth: 1,
+        //                 borderColor: '#ddd',
+        //                 labelMargin: 8
+        //             },
+        //             xaxis: {
+        //                 mode: 'time',
+        //                 timeformat: "%d/%m",
+        //                 tickSize: [2, "day"],
+        //                 tickFormatter: function(val, axis) {
+        //                     return formatDate(val);
+        //                 },
+        //                 tickLength: 0,
+        //                 font: {
+        //                     size: 10,
+        //                     color: "#333"
+        //                 }
+        //             },
+        //             yaxis: {
+        //                 min: 40,
+        //                 max: 150,
+        //                 show: true
+        //             }
+        //         });
+
+        //         // **Rotar las etiquetas del eje X**
+        //         $("#flotChart .flot-x-axis div").css({
+        //             "transform": "rotate(45deg)",
+        //             "transform-origin": "top left",
+        //             "white-space": "nowrap",
+        //             "text-align": "left",
+        //             "margin-left": "10px" // Ajusta el margen si es necesario
+        //         });
+        //     }
+        // });
     </script>
 
-    <!-- <script src="assets/vendors/js/vendor.bundle.base.js"></script> -->
+    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
     <!-- <script src="assets/vendors/jquery-bar-rating/jquery.barrating.min.js"></script> -->
-    <!-- <script src="assets/vendors/chart.js/chart.umd.js"></script> -->
+    <script src="assets/vendors/chart.js/chart.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.time.min.js"></script>
+
     <!-- <script src="assets/vendors/flot/jquery.flot.js"></script> -->
     <script src="assets/vendors/flot/jquery.flot.resize.js"></script>
     <script src="assets/vendors/flot/jquery.flot.categories.js"></script>

@@ -35,8 +35,13 @@ Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->na
 // Ruta para procesar el registro
 Route::post('/register', [RegisterController::class, 'register']);
 
+Route::get('/form', function () {
+    return view('form');
+})->name('form');
+
+
 // Ruta protegida de inicio para los usuarios autenticados
-Route::middleware('auth')->get('/home', function () {
-    return '¡Bienvenido a la aplicación!'; // Ruta de bienvenida
-})->name('home');
+// Route::middleware('auth')->get('/home', function () {
+//     return '¡Bienvenido a la aplicación!'; // Ruta de bienvenida
+// })->name('home');
 

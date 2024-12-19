@@ -27,6 +27,11 @@
     <div class="col-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
+                @if(session('success'))
+                <div id="floating-message" class="floating-message " role="alert">
+                    {{ session('success') }}
+                </div>
+                @endif
                 <h4 class="card-title"> Peso Seco </h4>
                 <p class="card-description"> Registro Diario </p>
                 <form class="forms-sample" method="POST" action="{{ route('pesos.store') }}">
@@ -68,6 +73,24 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const message = document.getElementById('floating-message');
+        if (message) {
+            message.classList.add('show'); // Mostrar el mensaje
+
+            // Ocultar automáticamente después de 3 segundos
+            setTimeout(() => {
+                message.classList.remove('show');
+            }, 5000);
+        }
+    });
+</script>
+
+
+
 
 <!-- Plugins: JS -->
 <script src="{{ asset('assets/vendors/js/vendor.bundle.base.js') }}"></script>

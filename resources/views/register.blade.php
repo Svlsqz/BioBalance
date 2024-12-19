@@ -22,7 +22,7 @@
             <div class="col-lg-4 mx-auto">
               <div class="auth-form-light text-left p-5">
                 <div class="brand-logo">
-                  <img src="../../assets/images/logo.svg">
+                  <img src="../../assets/images/logo1.svg">
                 </div>
                 <h4>Registro de Paciente</h4>
                 <h6 class="fw-light">Complete los datos para registrar al paciente</h6>

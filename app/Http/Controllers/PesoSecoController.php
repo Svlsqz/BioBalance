@@ -46,7 +46,7 @@ class PesoSecoController extends Controller
         ]);
 
         // Redirigimos a la vista de índice con un mensaje de éxito
-        return redirect()->route('index')->with('success', 'Peso registrado exitosamente');
+        return redirect()->route('form')->with('success', 'Peso registrado exitosamente.');
     }
 
    

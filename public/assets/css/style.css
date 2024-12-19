@@ -120,6 +120,29 @@
     opacity: 1;
   }
 }
+.floating-message {
+  position: fixed;
+  top: 200px; /* Distancia desde el fondo */
+  right: 50px; /* Distancia desde el lado derecho */
+  z-index: 1050; /* Asegúrate de que esté sobre otros elementos */
+  padding: 10px 20px; /* Espaciado interno */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra */
+  background-color: #0a2e93b9; /* Fondo verde éxito */
+  color: white; /* Texto blanco */
+  white-space: nowrap; /* Evitar que el texto se rompa en varias líneas */
+  display: inline-block; /* Ajustar al contenido */
+  max-width: 90%; /* Opcional: limitar el ancho máximo relativo al viewport */
+  opacity: 0; /* Oculto inicialmente */
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Animaciones suaves */
+  transform: translateY(20px); /* Pequeño desplazamiento inicial */
+  word-wrap: break-word; /* Romper palabras largas si es necesario (opcional) */
+}
+
+.floating-message.show {
+  opacity: 1; /* Visible */
+  transform: translateY(0); /* Sin desplazamiento */
+}
+
 @-o-keyframes flash {
   0% {
     opacity: 1;
