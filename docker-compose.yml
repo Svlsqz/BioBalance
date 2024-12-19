@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: laravel_app
+    ports:
+      - 8000:80
+    volumes:
+      - .:/var/www/html
+    networks:
+      - laravel_network
+    environment:
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_DATABASE=control_peso_seco
+      - DB_USERNAME=root
+      - DB_PASSWORD=
+
+  db:
+    image: mysql:5.7
+    container_name: laravel_db
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: control_peso_seco
+    networks:
+      - laravel_network
+
+networks:
+  laravel_network:
+    driver: bridge
